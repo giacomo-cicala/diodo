@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "diodo.C": "cpp",
+        "diodo_lin.C": "cpp"
+    }
+}
