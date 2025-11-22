@@ -42,7 +42,7 @@ void fit_calibrazione()
 void silicio()
 {
     const char *filename = "data/dati_silicio.txt";
-    TGraphErrors *gr = new TGraphErrors(filename, "%lg %lg");
+    TGraphErrors *gr = new TGraphErrors(filename, "%lg %lg %lg %lg");
 
     if (gr->GetN() == 0)
     {
@@ -61,7 +61,7 @@ void silicio()
     f->SetParNames("I0", "etaVt");
     // Valori iniziali ragionevoli per convergenza (eta*Vt ~ 26 mV a T ambiente)
     f->SetParameter(0, 1e-6);
-    f->SetParameter(1, 26);
+    f->SetParameter(1, 60);
     f->SetLineColor(kRed);
 
     gr->Fit(f, "QS"); // Q=quiet, S=store result
@@ -87,7 +87,7 @@ void silicio()
 void germanio()
 {
     const char *filename = "data/dati_germanio.txt";
-    TGraphErrors *gr = new TGraphErrors(filename, "%lg %lg");
+    TGraphErrors *gr = new TGraphErrors(filename, "%lg %lg %lg %lg");
 
     if (gr->GetN() == 0)
     {
@@ -100,10 +100,10 @@ void germanio()
     gr->SetMarkerStyle(20);
     gr->SetMarkerColor(kGreen + 2);
 
-    TF1 *f = new TF1("fshock_ge", "[0]*(exp(x/[1])-1)", 0, 1000.);
+    TF1 *f = new TF1("fshock_ge", "[0]*(exp(x/[1])-1)", 0, 1000);
     f->SetParNames("I0", "etaVt");
-    f->SetParameter(0, 1e-6);
-    f->SetParameter(1, 20.0);
+    f->SetParameter(0, 0.005);
+    f->SetParameter(1, 30);
     f->SetLineColor(kRed);
 
     gr->Fit(f, "QS");
@@ -114,7 +114,7 @@ void germanio()
     double sigma_etaVt = f->GetParError(1);
 
     gr->Draw("AP");
-    f->Draw("same");
+    
     // Scala logaritmica sull'asse Y (corrente)
     if (gPad)
         gPad->SetLogy(1);
