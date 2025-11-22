@@ -1,0 +1,68 @@
+\documentclass[12pt,italian]{article}
+\usepackage[italian]{babel}
+\usepackage[a4paper, margin=1.97cm]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{circuitikz}
+\usepackage{caption}
+\usepackage{amsfonts}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+
+\newcommand{\err}[1]{\textcolor{red}{#1}}
+
+\title{Misura della caratteristiva I-V di due diodi a giunzione p-n}
+\author{Enrico Barbuio \\ 0001117553 \and Giacomo Cicala \\ 0001122965} 
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\renewcommand{\abstractname}{Abstract}
+\begin{abstract}
+    L'esperimento ha avuto come obbiettivo la realizzazione di un circuito per la misura delle curve caratteristica I-V di due diodi a giunzione p-n, uno al silicio e uno al germanio. I valori della corrente di saturazione inversa e del prodotto del fattore di idealità con la tensione termica per il diodo al silicio sono risultati essere
+    \begin{equation*}
+        (I_{0})_{Si} = ( \cdots \pm \cdots) \text{ mA} \hspace{2cm} (\eta V_{T})_{Si} = (\cdots \pm \cdots) \text{ mV}
+    \end{equation*}
+
+    \noindent
+    mentre per il diodo al germanio sono risultati essere
+
+    \begin{equation*}
+        (I_{0})_{Ge} = ( \cdots \pm \cdots) \text{ mA} \hspace{2cm} (\eta V_{T})_{Ge} = (\cdots \pm \cdots) \text{ mV}
+    \end{equation*}
+
+\end{abstract}
+
+\section*{Introduzione}
+
+Nell' esperimento svolto in laboratorio abbiamo abbiamo realizzato un circuito (\cref{fig:schema_elettrico}) per la misura della caratteristica I-V di due diodi a giunzione p-n a polarizzazione diretta, uno al silicio e uno al germanio. La caratteristica I-V di un diodo non ideale è descritta dall'equazione di Shockley:
+
+\begin{equation}
+    I = I_{0} \left( e^{\frac{V}{\eta V_{T}}} - 1 \right)
+    \label{eq:shockley}
+\end{equation}
+
+\noindent
+dove $I$ è la corrente che attraversa il diodo, $V$ è la tensione ai suoi capi, $I_{0}$ è la corrente di saturazione inversa e $V_{T}$ è la tensione termica. Il termine $\eta$ è il fattore di idealità: questo tiene conto delle deviazioni del diodo reale rispetto al modello teorico ideale di Shockley, dovute principalmente a fenomeni di generazione termica e ricombinazione all'interno della depletion region.
+
+\begin{figure}[h!]
+    \centering
+    \begin{circuitikz}
+       
+    \end{circuitikz}
+    \caption{Schema elettrico del circuito utilizzato per la misura della caratteristica I-V di un diodo a giunzione p-n.}
+    \label{fig:schema_elettrico}
+\end{figure}
+
+\section*{Apparato sperimentale e svolgimento}
+
+\section*{Risultati e discussione}
+
+\section*{Conclusioni}
+
+\appendix
+\section{Appendici}
+
+\end{document}
