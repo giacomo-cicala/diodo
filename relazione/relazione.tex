@@ -49,8 +49,28 @@ dove $I$ è la corrente che attraversa il diodo, $V$ è la tensione ai suoi capi
 
 \begin{figure}[h!]
     \centering
-    \begin{circuitikz}
-       
+    \begin{circuitikz}[scale=1]
+        \% 1. Generatore di Tensione e collegamento al Potenziometro
+    % Disegno dal basso (0,0) verso l'alto (0,3) e poi verso destra
+    \draw (0,0) to[V, v=$V_{in}$] (0,3) 
+                -- (2,3);
+
+    % 2. Il Potenziometro (Verticale)
+    % TRUCCO: Disegnandolo dall'alto (2,3) verso il basso (2,0),
+    % il "wiper" (cursore) si troverà automaticamente sul lato destro.
+    \draw (2,3) to[potentiometer, n=P, l_=$R$] (2,0)
+                -- (0,0); % Chiudo il loop verso il generatore
+    
+    % Aggiungo la massa
+    \draw (0,0) node[ground]{};
+
+    % 3. Il ramo del Diodo
+    % Parto dall'ancoraggio del cursore (P.wiper)
+    \draw (P.wiper) -- ++(1.5,0)        % Filo orizzontale verso destra
+                    to[D, l=$D$] ++(0,-1.5) % Diodo verso il basso (coordinate relative)
+                    -- (2,0);           % Chiudo il circuito sulla linea di massa
+        
+
     \end{circuitikz}
     \caption{Schema elettrico del circuito utilizzato per la misura della caratteristica I-V di un diodo a giunzione p-n.}
     \label{fig:schema_elettrico}
