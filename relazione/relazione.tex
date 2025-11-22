@@ -12,7 +12,7 @@
 
 \newcommand{\err}[1]{\textcolor{red}{#1}}
 
-\title{Misura della caratteristiva I-V di due diodi a giunzione p-n}
+\title{Misura della caratteristiva I-V di diodi a giunzione p-n al germanio e al silicio}
 \author{Enrico Barbuio \\ 0001117553 \and Giacomo Cicala \\ 0001122965} 
 \date{\today}
 
@@ -50,26 +50,27 @@ dove $I$ è la corrente che attraversa il diodo, $V$ è la tensione ai suoi capi
 \begin{figure}[h!]
     \centering
     \begin{circuitikz}[scale=1]
-        \% 1. Generatore di Tensione e collegamento al Potenziometro
-    % Disegno dal basso (0,0) verso l'alto (0,3) e poi verso destra
-    \draw (0,0) to[V, v=$V_{in}$] (0,3) 
-                -- (2,3);
+        % 1. Generatore di Tensione e collegamento al Potenziometro
+        % Disegno dal basso (0,0) verso l'alto (0,3) e poi verso destra
+        \draw (0,0) to[american voltage source,invert, l=$+5V
+            $] (0,3)
+        -- (2,3);
 
-    % 2. Il Potenziometro (Verticale)
-    % TRUCCO: Disegnandolo dall'alto (2,3) verso il basso (2,0),
-    % il "wiper" (cursore) si troverà automaticamente sul lato destro.
-    \draw (2,3) to[potentiometer, n=P, l_=$R$] (2,0)
-                -- (0,0); % Chiudo il loop verso il generatore
-    
-    % Aggiungo la massa
-    \draw (0,0) node[ground]{};
+        % 2. Il Potenziometro (Verticale)
+        % TRUCCO: Disegnandolo dall'alto (2,3) verso il basso (2,0),
+        % il "wiper" (cursore) si troverà automaticamente sul lato destro.
+        \draw (2,3) to[potentiometer, n=P, l_=$R$] (2,0)
+        -- (0,0); % Chiudo il loop verso il generatore
 
-    % 3. Il ramo del Diodo
-    % Parto dall'ancoraggio del cursore (P.wiper)
-    \draw (P.wiper) -- ++(1.5,0)        % Filo orizzontale verso destra
-                    to[D, l=$D$] ++(0,-1.5) % Diodo verso il basso (coordinate relative)
-                    -- (2,0);           % Chiudo il circuito sulla linea di massa
-        
+        % Aggiungo la massa
+        \draw (0,0) node[ground]{};
+
+        % 3. Il ramo del Diodo
+        % Parto dall'ancoraggio del cursore (P.wiper)
+        \draw (P.wiper) -- ++(1.5,0)        % Filo orizzontale verso destra
+        to[D*, l=$D$] ++(0,-1.5) % Diodo verso il basso (coordinate relative)
+        -- (2,0);           % Chiudo il circuito sulla linea di massa
+
 
     \end{circuitikz}
     \caption{Schema elettrico del circuito utilizzato per la misura della caratteristica I-V di un diodo a giunzione p-n.}
@@ -77,6 +78,8 @@ dove $I$ è la corrente che attraversa il diodo, $V$ è la tensione ai suoi capi
 \end{figure}
 
 \section*{Apparato sperimentale e svolgimento}
+Il circuito (\cref{fig:schema_elettrico}) è stato realizzato su una piastra forata utilizzando un generatore di tensione da $+5$V (\err{specificare?}), un potenziometro da 1 k$\Omega$ e due diodi a giunzione p-n, uno al silicio (\err{codice diodo?}) e uno al germanio (\err{uguale}). La tensione ai capi del diodo e la corrente che lo attraversa sono state misurate rispettivamente con un oscilloscopio da banco (\err{specificare?})  e  da un multimetro in modalità amperometro (\err{specificare?}).  Prima di verificare l'equazione di Shockley, per verificare la calibrazione tra multimetro e oscilloscopio, si sono fatte misure di tensione tra i punti A e B (\err{aggiungere}) del circuito in (\cref{fig:schema_elettrico}) con entrambi gli strumenti.
+ Successivamente, per ricavare le caratteristiche I-V, la resistenza del potenziometro è stata variata in modo da ottenere diverse coppie di valori di tensione e corrente.
 
 \section*{Risultati e discussione}
 

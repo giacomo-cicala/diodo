@@ -1,5 +1,5 @@
 # Fdb version 3
-["lualatex"] 1763823256 "/home/giacomo/lab3/diodo/relazione/relazione.tex" "build/relazione.pdf" "relazione" 1763823257
+["lualatex"] 1763833193 "/home/giacomo/lab3/diodo/relazione/relazione.tex" "build/relazione.pdf" "relazione" 1763833195
   "/home/giacomo/.texlive2021/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-bold.luc" 1747475627 124213 a3bd0e7906af025b007d0cfb6e758f8b ""
   "/home/giacomo/.texlive2021/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-regular.luc" 1747475627 123142 a5bb91f587c7a560590d95e654431ffa ""
   "/home/giacomo/.texlive2021/texmf-var/luatex-cache/generic/fonts/otl/lmroman12-bold.luc" 1746522362 124110 5d651ed7b24a029d9df49f8fec52c53c ""
@@ -8,7 +8,7 @@
   "/home/giacomo/.texlive2021/texmf-var/luatex-cache/generic/fonts/otl/lmroman6-regular.luc" 1747298255 124323 ae87dbcd814f23e499c392d06864a1f6 ""
   "/home/giacomo/.texlive2021/texmf-var/luatex-cache/generic/fonts/otl/lmroman8-regular.luc" 1747298255 123949 4155eb357ed1cf2ce51e7cc0bba182a9 ""
   "/home/giacomo/.texlive2021/texmf-var/luatex-cache/generic/names/luaotfload-names.luc" 1746522625 1546684 332acb0f54a4c733c0726eaafdcd3aac ""
-  "/home/giacomo/lab3/diodo/relazione/relazione.tex" 1763823254 3508 d7a8c900f568ac8446ef606ba02c3146 ""
+  "/home/giacomo/lab3/diodo/relazione/relazione.tex" 1763833193 4487 61e5f1b639ec31b90f51b72a031b271f ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -241,9 +241,9 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1746510146 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/tex/generic/config/language.dat" 1746510151 5130 e026ef6ff12c5b9df8a3604e4b0d80d1 ""
   "/var/lib/texmf/web2c/luahbtex/lualatex.fmt" 1746510214 4555474 2eda5d821f2f08cbddb4355c9f6011af ""
-  "build/relazione.aux" 1763823257 1560 92339f97afadbff93bd23c1050a28d38 "lualatex"
-  "build/relazione.out" 1763823257 93 5dbc2a9fe972077ddf47960751e4f168 "lualatex"
-  "relazione.tex" 1763823254 3508 d7a8c900f568ac8446ef606ba02c3146 ""
+  "build/relazione.aux" 1763833195 1560 92339f97afadbff93bd23c1050a28d38 "lualatex"
+  "build/relazione.out" 1763833195 93 5dbc2a9fe972077ddf47960751e4f168 "lualatex"
+  "relazione.tex" 1763833193 4487 61e5f1b639ec31b90f51b72a031b271f ""
   (generated)
   "build/relazione.aux"
   "build/relazione.log"
