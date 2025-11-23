@@ -5,10 +5,11 @@
 \usepackage{amsmath}
 \usepackage{circuitikz}
 \usepackage{caption}
+\usepackage{subcaption}
 \usepackage{amsfonts}
-
 \usepackage[hidelinks]{hyperref}
 \usepackage{cleveref}
+\graphicspath{{./images/}}
 
 \newcommand{\err}[1]{\textcolor{red}{#1}}
 
@@ -78,8 +79,38 @@ dove $I$ è la corrente che attraversa il diodo, $V$ è la tensione ai suoi capi
 \end{figure}
 
 \section*{Apparato sperimentale e svolgimento}
-Il circuito (\cref{fig:schema_elettrico}) è stato realizzato su una piastra forata utilizzando un generatore di tensione da $+5$V (\err{specificare?}), un potenziometro da 1 k$\Omega$ e due diodi a giunzione p-n, uno al silicio (\err{codice diodo?}) e uno al germanio (\err{uguale}). La tensione ai capi del diodo e la corrente che lo attraversa sono state misurate rispettivamente con un oscilloscopio da banco (\err{specificare?})  e  da un multimetro in modalità amperometro (\err{specificare?}).  Prima di verificare l'equazione di Shockley, per verificare la calibrazione tra multimetro e oscilloscopio, si sono fatte misure di tensione tra i punti A e B (\err{aggiungere}) del circuito in (\cref{fig:schema_elettrico}) con entrambi gli strumenti.
- Successivamente, per ricavare le caratteristiche I-V, la resistenza del potenziometro è stata variata in modo da ottenere diverse coppie di valori di tensione e corrente.
+
+% Testo descrittivo dell'apparato sperimentale va qui. Le immagini della strumentazione
+% sono posizionate in fondo alla sezione per non interrompere il flusso del testo.
+
+Il circuito (\cref{fig:schema_elettrico}) è stato realizzato su una piastra forata (\err{foto?}) utilizzando un alimentatore a bassa tensione \textit{TTi EB2025T} impostato a  $+5$V(\cref{fig:alimentatore}), un potenziometro da 1 k$\Omega$ e due diodi a giunzione p-n, uno al silicio (\err{codice diodo?}) e uno al germanio (\err{uguale}). La tensione ai capi del diodo e la corrente che lo attraversa sono state misurate rispettivamente con un oscilloscopio  da banco \textit{GW Instek GOS-652G} (\cref{fig:oscilloscopio})  e  da un multimetro \textit{Fluke 175 True RMS Multimeter} (\cref{fig:multimetro}) in modalità amperometro .Prima di verificare l'equazione di Shockley, per testare la calibrazione tra multimetro e oscilloscopio, si è rimosso il diodo (cortocircuitando il ramo) e si sono fatte misure di tensione tra i punti A e B (\err{aggiungere}) del circuito in (\cref{fig:schema_elettrico}) con entrambi gli strumenti per un \err{dato valore del potenziometro}. Successivamente, per ricavare le caratteristiche I-V, la resistenza del potenziometro è stata variata in modo da ottenere diverse coppie di valori di tensione e corrente.
+
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/alimentatore.png}
+        \caption{Alimentatore}
+        \label{fig:alimentatore}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/oscilloscopio2.jpg}
+        \caption{Oscilloscopio}
+        \label{fig:oscilloscopio}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/multimetro.png}
+        \caption{Multimetro}
+        \label{fig:multimetro}
+    \end{subfigure}
+    \caption{Strumentazione usata nell'apparato sperimentale: (a) Alimentatore  \textit{TTi EB2025T}; (b) Oscilloscopio \textit{GW Instek GOS-652G}; (c) Multimetro \textit{Fluke 175 True RMS Multimeter}.}
+    \label{fig:apparato_sperimentale}
+\end{figure}
 
 \section*{Risultati e discussione}
 
