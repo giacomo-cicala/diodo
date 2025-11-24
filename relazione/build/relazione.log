@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.14.0 (TeX Live 2022/dev/Debian)  (format=lualatex 2025.5.6)  23 NOV 2025 14:50
+This is LuaHBTeX, Version 1.14.0 (TeX Live 2022/dev/Debian)  (format=lualatex 2025.5.6)  24 NOV 2025 23:45
  restricted system commands enabled.
  file:line:error style messages enabled.
 **/home/giacomo/lab3/diodo/relazione/relazione.tex
@@ -628,37 +628,95 @@ LaTeX Info: Redefining \cpagerefrange on input line 2370.
 LaTeX Info: Redefining \Cpagerefrange on input line 2370.
 LaTeX Info: Redefining \labelcref on input line 2370.
 LaTeX Info: Redefining \labelcpageref on input line 2370.
-) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
+) (/usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx.sty
+Package: siunitx 2022-02-02 v3.0.46 A comprehensive (SI) units package
+\l__siunitx_angle_tmp_dim=\dimen298
+\l__siunitx_angle_marker_box=\box64
+\l__siunitx_angle_unit_box=\box65
+\l__siunitx_compound_count_int=\count316
+ (/usr/share/texlive/texmf-dist/tex/latex/translations/translations.sty
+Package: translations 2022/01/04 v1.11 internationalization of LaTeX2e packages (CN)
+)
+\l__siunitx_number_exponent_fixed_int=\count317
+\l__siunitx_number_min_decimal_int=\count318
+\l__siunitx_number_min_integer_int=\count319
+\l__siunitx_number_round_precision_int=\count320
+\l__siunitx_number_group_minimum_int=\count321
+\l__siunitx_table_tmp_box=\box66
+\l__siunitx_table_tmp_dim=\dimen299
+\l__siunitx_table_column_width_dim=\dimen300
+\l__siunitx_table_integer_box=\box67
+\l__siunitx_table_decimal_box=\box68
+\l__siunitx_table_before_box=\box69
+\l__siunitx_table_after_box=\box70
+\l__siunitx_table_before_dim=\dimen301
+\l__siunitx_table_carry_dim=\dimen302
+\l__siunitx_unit_tmp_int=\count322
+\l__siunitx_unit_position_int=\count323
+\l__siunitx_unit_total_int=\count324
+ (/usr/share/texlive/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2022-01-21 L3 programming layer (loader) 
+ (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
 File: l3backend-luatex.def 2022-01-12 L3 backend support: PDF output (LuaTeX)
-\l__color_backend_stack_int=\count316
-\l__pdf_internal_box=\box64
+\l__color_backend_stack_int=\count325
+\l__pdf_internal_box=\box71
+))
+Package: l3keys2e 2022-01-12 LaTeX2e option processing using LaTeX3 keys
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
+\col@sep=\dimen303
+\ar@mcellbox=\box72
+\extrarowheight=\dimen304
+\NC@list=\toks36
+\extratabsurround=\skip53
+\backup@length=\skip54
+\ar@cellbox=\box73
+)) (/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen305
+\lightrulewidth=\dimen306
+\cmidrulewidth=\dimen307
+\belowrulesep=\dimen308
+\belowbottomsep=\dimen309
+\aboverulesep=\dimen310
+\abovetopsep=\dimen311
+\cmidrulesep=\dimen312
+\cmidrulekern=\dimen313
+\defaultaddspace=\dimen314
+\@cmidla=\count326
+\@cmidlb=\count327
+\@aboverulesep=\dimen315
+\@belowrulesep=\dimen316
+\@thisruleclass=\count328
+\@lastruleclass=\count329
+\@thisrulewidth=\dimen317
 ) (./build/relazione.aux)
 \openout1 = relazione.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 23.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: luatex
@@ -696,17 +754,17 @@ LaTeX Font Info:    ... okay on input line 20.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count317
-\scratchdimen=\dimen298
-\scratchbox=\box65
-\nofMPsegments=\count318
-\nofMParguments=\count319
-\everyMPshowfont=\toks36
-\MPscratchCnt=\count320
-\MPscratchDim=\dimen299
-\MPnumerator=\count321
-\makeMPintoPDFobject=\count322
-\everyMPtoPDFconversion=\toks37
+\scratchcounter=\count330
+\scratchdimen=\dimen318
+\scratchbox=\box74
+\nofMPsegments=\count331
+\nofMParguments=\count332
+\everyMPshowfont=\toks37
+\MPscratchCnt=\count333
+\MPscratchDim=\dimen319
+\MPnumerator=\count334
+\makeMPintoPDFobject=\count335
+\everyMPtoPDFconversion=\toks38
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -716,7 +774,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 20.
+Package hyperref Info: Link coloring OFF on input line 23.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
@@ -724,20 +782,21 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count323
+\c@section@level=\count336
 )
-LaTeX Info: Redefining \ref on input line 20.
-LaTeX Info: Redefining \pageref on input line 20.
-LaTeX Info: Redefining \nameref on input line 20.
+LaTeX Info: Redefining \ref on input line 23.
+LaTeX Info: Redefining \pageref on input line 23.
+LaTeX Info: Redefining \nameref on input line 23.
  (./build/relazione.out) (./build/relazione.out)
 \@outlinefile=\write4
 
 \openout4 = relazione.out
-LaTeX Font Info:    Trying to load font information for U+msa on input line 22.
+Package translations Info: no dictionary file `translations-basic-dictionary-italian.trsl' found. on input line 23.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 22.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
@@ -748,17 +807,70 @@ File: images/alimentatore.png Graphic file (type png)
 <use images/alimentatore.png>
 Package luatex.def Info: images/alimentatore.png  used on input line 93.
 (luatex.def)             Requested size: 155.33281pt x 129.44675pt.
-<images/oscilloscopio2.jpg, id=41, 1606.0pt x 1204.5pt>
-File: images/oscilloscopio2.jpg Graphic file (type jpg)
-<use images/oscilloscopio2.jpg>
-Package luatex.def Info: images/oscilloscopio2.jpg  used on input line 100.
-(luatex.def)             Requested size: 155.33281pt x 116.48715pt.
+<images/oscilloscopio3.png, id=41, 522.95375pt x 480.79625pt>
+File: images/oscilloscopio3.png Graphic file (type png)
+<use images/oscilloscopio3.png>
+Package luatex.def Info: images/oscilloscopio3.png  used on input line 100.
+(luatex.def)             Requested size: 155.33281pt x 142.80939pt.
 <images/multimetro.png, id=42, 501.875pt x 501.875pt>
 File: images/multimetro.png Graphic file (type png)
 <use images/multimetro.png>
 Package luatex.def Info: images/multimetro.png  used on input line 107.
 (luatex.def)             Requested size: 155.33281pt x 155.33458pt.
- [2<./images/alimentatore.png><./images/oscilloscopio2.jpg><./images/multimetro.png>] (./build/relazione.aux
+
+Package siunitx Info: Option "table-figures-integer" has been deprecated in
+(siunitx)             this release.
+(siunitx)             
+(siunitx)             Use "table-format" as a replacement.
+
+
+Package siunitx Info: Option "table-figures-decimal" has been deprecated in
+(siunitx)             this release.
+(siunitx)             
+(siunitx)             Use "table-format" as a replacement.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--133
+[]\TU/lmr/m/n/12 Ten-sio-ni
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--133
+\TU/lmr/m/n/12 mul-ti-me-tro
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 134--134
+[]\TU/lmr/m/n/12 Ten-sio-ni
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 134--134
+\TU/lmr/m/n/12 oscil-lo-sco-pio
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--136
+[]\TU/lmr/m/n/12 Ri-so-lu-zio-ne
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--136
+\TU/lmr/m/n/12 oscil-lo-sco-pio
+ []
+
+
+Underfull \hbox (badness 1527) in paragraph at lines 137--137
+[]\TU/lmr/m/n/12 Er-ro-ri oscil-lo-sco-pio
+ []
+
+[2<./images/alimentatore.png><./images/oscilloscopio3.png><./images/multimetro.png>]
+<example-image.pdf, id=58, 321.2pt x 240.9pt>
+File: example-image.pdf Graphic file (type pdf)
+<use example-image.pdf>
+Package luatex.def Info: example-image.pdf  used on input line 185.
+(luatex.def)             Requested size: 339.78128pt x 254.84183pt.
+ [3</usr/share/texlive/texmf-dist/tex/latex/mwe/example-image.pdf>] [4] (./build/relazione.aux
 Package cleveref Info: loaded `italian' language definitions on input line 21.
 Package cleveref Info: loaded `italian' language definitions on input line 22.
 )
@@ -767,19 +879,19 @@ Package rerunfilecheck Info: File `relazione.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 40031 strings out of 477805
+ 43349 strings out of 477805
  100000,1648299 words of node,token memory allocated
- 567 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 5 glue, 4 kern, 1 glyph, 20 attribute, 54 glue_spec, 12 attribute_list, 2 write nodes
-   avail lists: 2:2042,3:884,4:55,5:332,6:50,7:8259,8:47,9:658,10:13,11:943
- 59689 multiletter control sequences out of 65536+600000
+ 626 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 5 glue, 4 kern, 1 glyph, 38 attribute, 55 glue_spec, 21 attribute_list, 2 write nodes
+   avail lists: 2:2237,3:884,4:53,5:360,6:58,7:8258,8:47,9:793,10:13,11:944
+ 62939 multiletter control sequences out of 65536+600000
  66 fonts using 4513847 bytes
- 99i,8n,98p,1221b,1108s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 99i,10n,98p,1213b,1108s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf/fonts/opentype/public/lm/lmroman12-italic.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman17-regular.otf></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on relazione.pdf (2 pages, 602985 bytes).
+Output written on relazione.pdf (4 pages, 677469 bytes).
 
-PDF statistics: 121 PDF objects out of 1000 (max. 8388607)
- 86 compressed objects within 1 object stream
- 11 named destinations out of 1000 (max. 131072)
+PDF statistics: 148 PDF objects out of 1000 (max. 8388607)
+ 108 compressed objects within 2 object streams
+ 19 named destinations out of 1000 (max. 131072)
  24 words of extra memory for PDF output out of 10000 (max. 100000000)
 

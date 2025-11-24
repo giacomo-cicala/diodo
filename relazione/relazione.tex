@@ -9,9 +9,12 @@
 \usepackage{amsfonts}
 \usepackage[hidelinks]{hyperref}
 \usepackage{cleveref}
+\usepackage{siunitx}
+\usepackage{booktabs}
 \graphicspath{{./images/}}
 
 \newcommand{\err}[1]{\textcolor{red}{#1}}
+\crefname{table}{tab.}{tab.}
 
 \title{Misura della caratteristiva I-V di diodi a giunzione p-n al germanio e al silicio}
 \author{Enrico Barbuio \\ 0001117553 \and Giacomo Cicala \\ 0001122965} 
@@ -80,10 +83,7 @@ dove $I$ è la corrente che attraversa il diodo, $V$ è la tensione ai suoi capi
 
 \section*{Apparato sperimentale e svolgimento}
 
-% Testo descrittivo dell'apparato sperimentale va qui. Le immagini della strumentazione
-% sono posizionate in fondo alla sezione per non interrompere il flusso del testo.
-
-Il circuito (\cref{fig:schema_elettrico}) è stato realizzato su una piastra forata (\err{foto?}) utilizzando un alimentatore a bassa tensione \textit{TTi EB2025T} impostato a  $+5$V(\cref{fig:alimentatore}), un potenziometro da 1 k$\Omega$ e due diodi a giunzione p-n, uno al silicio (\err{codice diodo?}) e uno al germanio (\err{uguale}). La tensione ai capi del diodo e la corrente che lo attraversa sono state misurate rispettivamente con un oscilloscopio  da banco \textit{GW Instek GOS-652G} (\cref{fig:oscilloscopio})  e  da un multimetro \textit{Fluke 175 True RMS Multimeter} (\cref{fig:multimetro}) in modalità amperometro .Prima di verificare l'equazione di Shockley, per testare la calibrazione tra multimetro e oscilloscopio, si è rimosso il diodo (cortocircuitando il ramo) e si sono fatte misure di tensione tra i punti A e B (\err{aggiungere}) del circuito in (\cref{fig:schema_elettrico}) con entrambi gli strumenti per un \err{dato valore del potenziometro}. Successivamente, per ricavare le caratteristiche I-V, la resistenza del potenziometro è stata variata in modo da ottenere diverse coppie di valori di tensione e corrente.
+Il circuito (\cref{fig:schema_elettrico}) è stato realizzato su una piastra forata (\err{foto?}) utilizzando un alimentatore a bassa tensione \textit{TTi EB2025T} impostato a  $+5$V(\cref{fig:alimentatore}), un potenziometro da 1 k$\Omega$ e due diodi a giunzione p-n, uno al silicio (\err{codice diodo?}) e uno al germanio (\err{uguale}). La tensione ai capi del diodo e la corrente che lo attraversa sono state misurate rispettivamente con un oscilloscopio  da banco \textit{GW Instek GOS-652G} (\cref{fig:oscilloscopio})  e  da un multimetro \textit{Fluke 175 True RMS Multimeter} (\cref{fig:multimetro}) in modalità amperometro. Prima di verificare l'equazione di Shockley, per testare la calibrazione tra multimetro e oscilloscopio, si è rimosso il diodo (cortocircuitando il ramo) e si sono fatte misure di tensione tra i punti A e B (\err{aggiungere}) del circuito (\cref{fig:schema_elettrico}) con entrambi gli strumenti, variando il valore del potenziometro. Successivamente, per ricavare le caratteristiche I-V, la resistenza del potenziometro è stata variata in modo da ottenere diverse coppie di valori di tensione e corrente.
 
 
 \begin{figure}[h!]
@@ -97,7 +97,7 @@ Il circuito (\cref{fig:schema_elettrico}) è stato realizzato su una piastra for
     \hfill
     \begin{subfigure}[b]{0.32\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{images/oscilloscopio2.jpg}
+        \includegraphics[width=\linewidth]{images/oscilloscopio3.png}
         \caption{Oscilloscopio}
         \label{fig:oscilloscopio}
     \end{subfigure}
@@ -113,6 +113,90 @@ Il circuito (\cref{fig:schema_elettrico}) è stato realizzato su una piastra for
 \end{figure}
 
 \section*{Risultati e discussione}
+Si riportano in (\cref{tab:calibrazione_strumenti}) i valori di tensione misurati con oscilloscopio e multimetro per effettuare la calibrazione degli strumenti.
+\sisetup{
+    table-number-alignment = center,
+    table-figures-integer = 4,
+    table-figures-decimal = 8
+}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{
+    S[table-format=4.2]
+    S[table-format=4.2]
+    S[table-format=3.0]
+    S[table-format=3.0]
+    S[table-format=2.6]
+}
+\toprule
+\multicolumn{1}{c}{\parbox{2.2cm}{Tensioni multimetro (mV)}} &
+\multicolumn{1}{c}{\parbox{2.4cm}{Tensioni oscilloscopio (mV)}} &
+\multicolumn{1}{c}{\parbox{3cm}{F.S oscilloscopio (mV/Div)}} &
+\multicolumn{1}{c}{\parbox{2.6cm}{Risoluzione oscilloscopio (mV)}} &
+\multicolumn{1}{c}{\parbox{3.6cm}{Errori oscilloscopio (mV)}} \\
+\midrule
+56.80  & 52.0  & 20  & 2  & 2.58526594  \\
+145.30 & 140.0 & 50  & 5  & 6.54904573  \\
+228.80 & 220.0 & 50  & 5  & 8.29517932  \\
+298.00 & 300.0 & 100 & 10 & 13.462912   \\
+377.30 & 380.0 & 100 & 10 & 15.1726728  \\
+453.70 & 460.0 & 100 & 10 & 17.0496334  \\
+531.60 & 540.0 & 100 & 10 & 19.0444218  \\
+635.2 & 640.0 & 200 & 20 & 27.7288658  \\
+709.0 & 720.0 & 200 & 20 & 29.4416372  \\
+815.0 & 800.0 & 200 & 20 & 31.2449996  \\ 
+\bottomrule
+\end{tabular}
+
+\caption{Tabella (\err{numeri a caso, ricontrolla, mettere simboli titoli?, cifre decimali?}).}
+\label{tab:calibrazione_strumenti}
+\end{table}
+
+Le incertezze del multimetro sono state omesse in quanto trascurabili rispetto a quelle dell'oscilloscopio.
+La risoluzione dell'oscilloscopio (e quindi l'errore sulla lettura) $\sigma_{l}$ è stata calcolata come
+\begin{equation}
+    \sigma_{l} = \frac{F.S}{5}*(\text{\#tacchette apprezzabili})
+\end{equation}
+dove in questo caso, in tutte le misure dell'esperimento, il numero di tacchette apprezzabili è stato 0.5. Infine, l'errore totale associato ad ogni misura di tensione con l'oscilloscopio è stato calcolato come
+
+\begin{equation}
+    \sigma = \sqrt{(\sigma_{l})^{2} + (\sigma_{c})^{2}}
+\end{equation}
+
+\noindent
+dove l'errore del costruttore è
+
+\begin{equation}
+    \frac{\sigma_{c}}{V_{mis}} = 3\%
+\end{equation} 
+
+\noindent
+con $V_{mis}$ tensione misurata; l'errore sullo zero dell'oscilloscopio è stato trascurato in quanto si è verificato che fosse molto più piccolo rispetto agli altri errori, grazie ad un opportuno fondo scala.
+
+Eseguendo un fit lineare dei dati di calibrazione (\cref{fig:fit_calibrazione})
+\begin{equation}
+    V_{osc} = a + b \cdot V_{mult}
+\end{equation}
+si è ottenuta la seguente relazione tra le due misure di tensione
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{example-image}
+    \caption{Fit lineare dei dati di calibrazione tra multimetro e oscilloscopio.\err{completare}}
+    \label{fig:fit_calibrazione}
+\end{figure}
+
+I parametri del fit 
+
+\begin{equation*}
+    a = \cdots \pm \cdots \text{ mV} \hspace{2cm} b = \cdots \pm \cdots
+\end{equation*}
+
+\noindent
+indicano che il coefficiente angolare è compatibile con l'unità, mentre l'intercetta non è compatibile con lo zero, indicando un offset che sarà poi corretto nelle misure successive di tensione con l'oscilloscopio.
+
+
 
 \section*{Conclusioni}
 

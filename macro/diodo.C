@@ -114,7 +114,7 @@ void germanio()
     double sigma_etaVt = f->GetParError(1);
 
     gr->Draw("AP");
-    
+
     // Scala logaritmica sull'asse Y (corrente)
     if (gPad)
         gPad->SetLogy(1);
@@ -127,18 +127,89 @@ void germanio()
 
 void analisi_completa()
 {
+    // Mantieni lo stile delle altre funzioni: crea i grafici direttamente dai file,
+    // esegui i fit e poi usa TMultiGraph per sovrapporli in un unico pannello.
     gStyle->SetOptFit(1111);
     gStyle->SetOptStat(0);
 
-    TCanvas *c1 = new TCanvas("c1", "Analisi Diodi (esponenziale)", 1200, 800);
-    c1->Divide(2, 2);
+    TCanvas *c1 = new TCanvas("c1", "Diodi - Multiplot fittato", 1000, 700);
+    c1->cd();
 
-    c1->cd(1);
-    fit_calibrazione();
+    // Crea i TGraphErrors passando i nomi dei file (stile come nelle altre funzioni)
+    const char *file_si = "data/dati_silicio.txt";
+    const char *file_ge = "data/dati_germanio.txt";
+    TGraphErrors *gr_si = new TGraphErrors(file_si, "%lg %lg %lg %lg");
+    TGraphErrors *gr_ge = new TGraphErrors(file_ge, "%lg %lg %lg %lg");
 
-    c1->cd(2);
-    silicio();
+    if (gr_si->GetN() == 0)
+    {
+        std::cout << "Errore: " << file_si << " vuoto o non trovato!" << std::endl;
+        return;
+    }
+    if (gr_ge->GetN() == 0)
+    {
+        std::cout << "Errore: " << file_ge << " vuoto o non trovato!" << std::endl;
+        return;
+    }
 
-    c1->cd(3);
-    germanio();
+    gr_si->SetMarkerStyle(20);
+    gr_si->SetMarkerColor(kBlue);
+    gr_si->SetTitle("Diodi - Multiplot;Tensione (mV);Corrente (mA)");
+    gr_ge->SetMarkerStyle(21);
+    gr_ge->SetMarkerColor(kRed);
+
+    // Definisci le funzioni di fit (stesso modello usato altrove)
+    TF1 *f_si = new TF1("f_si", "[0]*(exp(x/[1])-1)", 0., 1000.);
+    f_si->SetParNames("I0", "etaVt");
+    f_si->SetParameter(0, 1e-6);
+    f_si->SetParameter(1, 40);
+    f_si->SetLineColor(kBlue);
+    TF1 *f_ge = new TF1("f_ge", "[0]*(exp(x/[1])-1)", 0., 110);
+    f_ge->SetParNames("I0", "etaVt");
+    f_ge->SetParameter(0, 0.005);
+    f_ge->SetParameter(1, 30.0);
+    f_ge->SetLineColor(kRed);
+
+    // Esegui i fit direttamente sui grafici creati dai file
+    TFitResultPtr r_si = gr_si->Fit(f_si, "QS");
+    TFitResultPtr r_ge = gr_ge->Fit(f_ge, "QS", "", 0., 110.);
+
+    // Assicuriamoci scala lineare
+    if (gPad)
+        gPad->SetLogy(1);
+
+    // Multiplot con TMultiGraph
+    TMultiGraph *mg = new TMultiGraph();
+    mg->Add(gr_si, "P");
+    mg->Add(gr_ge, "P");
+    mg->SetTitle("Diodi: Silicio vs Germanio;Tensione (mV);Corrente (mA)");
+    mg->Draw("AP");
+
+    // Disegna i fit
+    f_si->Draw("same");
+    f_ge->Draw("same");
+
+    // Legenda
+    TLegend *leg = new TLegend(0.65, 0.65, 0.89, 0.89);
+    leg->SetBorderSize(0);
+    leg->AddEntry(gr_si, "Silicio (dati)", "p");
+    leg->AddEntry(f_si, "Silicio (fit)", "l");
+    leg->AddEntry(gr_ge, "Germanio (dati)", "p");
+    leg->AddEntry(f_ge, "Germanio (fit)", "l");
+    leg->Draw();
+
+    // Stampa risultati
+    std::cout << std::fixed << std::setprecision(6);
+    if (r_si.Get())
+    {
+        std::cout << "\n>>> Silicio - fit results:\n";
+        std::cout << "I0 = " << f_si->GetParameter(0) << " +/- " << f_si->GetParError(0) << " (mA)\n";
+        std::cout << "eta*Vt = " << f_si->GetParameter(1) << " +/- " << f_si->GetParError(1) << " (mV)\n";
+    }
+    if (r_ge.Get())
+    {
+        std::cout << "\n>>> Germanio - fit results:\n";
+        std::cout << "I0 = " << f_ge->GetParameter(0) << " +/- " << f_ge->GetParError(0) << " (mA)\n";
+        std::cout << "eta*Vt = " << f_ge->GetParameter(1) << " +/- " << f_ge->GetParError(1) << " (mV)\n";
+    }
 }
