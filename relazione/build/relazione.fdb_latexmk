@@ -1,5 +1,5 @@
 # Fdb version 3
-["lualatex"] 1764083239 "/home/giacomo/lab3/diodo/relazione/relazione.tex" "build/relazione.pdf" "relazione" 1764083241
+["lualatex"] 1764084113 "/home/giacomo/lab3/diodo/relazione/relazione.tex" "build/relazione.pdf" "relazione" 1764084115
   "/home/giacomo/.texlive2021/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-bold.luc" 1747475627 124213 a3bd0e7906af025b007d0cfb6e758f8b ""
   "/home/giacomo/.texlive2021/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-regular.luc" 1747475627 123142 a5bb91f587c7a560590d95e654431ffa ""
   "/home/giacomo/.texlive2021/texmf-var/luatex-cache/generic/fonts/otl/lmroman12-bold.luc" 1746522362 124110 5d651ed7b24a029d9df49f8fec52c53c ""
@@ -9,7 +9,7 @@
   "/home/giacomo/.texlive2021/texmf-var/luatex-cache/generic/fonts/otl/lmroman6-regular.luc" 1747298255 124323 ae87dbcd814f23e499c392d06864a1f6 ""
   "/home/giacomo/.texlive2021/texmf-var/luatex-cache/generic/fonts/otl/lmroman8-regular.luc" 1747298255 123949 4155eb357ed1cf2ce51e7cc0bba182a9 ""
   "/home/giacomo/.texlive2021/texmf-var/luatex-cache/generic/names/luaotfload-names.luc" 1746522625 1546684 332acb0f54a4c733c0726eaafdcd3aac ""
-  "/home/giacomo/lab3/diodo/relazione/relazione.tex" 1764083239 9305 cf466518d343c9815644936f7c87d6da ""
+  "/home/giacomo/lab3/diodo/relazione/relazione.tex" 1764084113 9311 37cb6856e4d4c9ce544558e05a7635a5 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy8.tfm" 1246382020 1120 200be8b775682cdf80acad4be5ef57e4 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -261,13 +261,13 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1746510146 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/tex/generic/config/language.dat" 1746510151 5130 e026ef6ff12c5b9df8a3604e4b0d80d1 ""
   "/var/lib/texmf/web2c/luahbtex/lualatex.fmt" 1746510214 4555474 2eda5d821f2f08cbddb4355c9f6011af ""
-  "build/relazione.aux" 1764083241 4695 f41e27c186c98b48a77c817bdcb9f655 "lualatex"
-  "build/relazione.out" 1764083241 93 5dbc2a9fe972077ddf47960751e4f168 "lualatex"
-  "images//calibrazione.pdf" 1764083118 15082 13e8a5e28d5f374108b66f97fa2c2bf5 ""
-  "images/alimentatore.png" 1764009557 80575 8004cf328555587ca3aaa425127dfe2f ""
-  "images/multimetro.png" 1764009557 271911 5552ce786e7724e673cd4cca424dde44 ""
-  "images/oscilloscopio3.png" 1764009557 196169 40091386fea802020227326a957a2826 ""
-  "relazione.tex" 1764083239 9305 cf466518d343c9815644936f7c87d6da ""
+  "build/relazione.aux" 1764084115 4705 e8e4133bda8fb65880be86f58cf4d2f8 "lualatex"
+  "build/relazione.out" 1764084115 93 5dbc2a9fe972077ddf47960751e4f168 "lualatex"
+  "images//calibrazione.pdf" 1764083704 15082 13e8a5e28d5f374108b66f97fa2c2bf5 ""
+  "images/alimentatore.png" 1764083704 80575 8004cf328555587ca3aaa425127dfe2f ""
+  "images/multimetro.png" 1764083704 271911 5552ce786e7724e673cd4cca424dde44 ""
+  "images/oscilloscopio3.png" 1764083704 196169 40091386fea802020227326a957a2826 ""
+  "relazione.tex" 1764084113 9311 37cb6856e4d4c9ce544558e05a7635a5 ""
   (generated)
   "build/relazione.aux"
   "build/relazione.log"
