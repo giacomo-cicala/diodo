@@ -14,6 +14,13 @@
 void fit_calibrazione()
 {
     const char *filename = "data/dati_calibrazione.txt";
+
+    TCanvas *c1 = new TCanvas("c1", "Calibrazione", 800, 600);
+    c1->cd();
+    gStyle->SetOptFit(1111);
+    gStyle->SetOptStat(0);
+    gPad->SetGrid();
+    
     TGraphErrors *gr = new TGraphErrors(filename, "%lg %lg %lg %lg");
 
     if (gr->GetN() == 0)
@@ -31,6 +38,16 @@ void fit_calibrazione()
 
     gr->Fit(f0, "Q");
     gr->Draw("AP");
+    // Imposta range X e Y uguali e tick regolari da 0 a 900
+    if (gPad) {
+        gr->GetXaxis()->SetLimits(0, 900);
+        gr->SetMinimum(0);
+        gr->SetMaximum(900);
+        gPad->Modified();
+        gPad->Update();
+        gr->GetXaxis()->SetNdivisions(9, kTRUE);
+        gr->GetYaxis()->SetNdivisions(9, kTRUE);
+    }
 
     std::cout << std::fixed << std::setprecision(6);
     std::cout << "\n>>> Calibrazione (" << filename << " ):\n";

@@ -123,34 +123,36 @@ Si riportano in (\cref{tab:calibrazione_strumenti}) i valori di tensione misurat
 \begin{table}[ht]
 \centering
 \begin{tabular}{
-    S[table-format=4.2]
-    S[table-format=4.2]
-    S[table-format=3.0]
-    S[table-format=3.0]
-    S[table-format=2.6]
+    S[table-format=1.4] % 4 decimali per il multimetro (es. 0.0568)
+    S[table-format=1.3] % 3 decimali max per l'oscilloscopio
+    S[table-format=1.2] % Scala
+    S[table-format=1.3] % Risoluzione
+    S[table-format=1.3] % Errore (varia tra 2 e 3 decimali)
 }
 \toprule
-\multicolumn{1}{c}{\parbox{2.2cm}{Tensioni multimetro (mV)}} &
-\multicolumn{1}{c}{\parbox{2.4cm}{Tensioni oscilloscopio (mV)}} &
-\multicolumn{1}{c}{\parbox{3cm}{F.S oscilloscopio (mV/Div)}} &
-\multicolumn{1}{c}{\parbox{2.6cm}{Risoluzione oscilloscopio (mV)}} &
-\multicolumn{1}{c}{\parbox{3.6cm}{Errori oscilloscopio (mV)}} \\
+{ \boldmath $V_{mult}$ } &
+{ \boldmath $V_{osc}$ } &
+{ \boldmath $F.S._{osc}$ } &
+{ \boldmath $\sigma_{l}$ } &
+{ \boldmath $\sigma_{osc}$ } \\
+
+{ (V) } & { (V) } & { (V/div) } & { (V) } & { (V) } \\
 \midrule
-56.8  & 52 & 20  & 2  & 3  \\
-145.3 & 140 & 50  & 5  & 7  \\
-228.8 & 220 & 50  & 5  & 8  \\
-298.0 & 300 & 100 & 10 & 13  \\
-377.3 & 380 & 100 & 10 & 15  \\
-453.7 & 460 & 100 & 10 & 17  \\
-531.6 & 540 & 100 & 10 & 19  \\
-635 & 640 & 200 & 20 & 28  \\
-709 & 720 & 200 & 20 & 30  \\
-815 & 800 & 200 & 20 & 31  \\ 
+0.0568 & 0.052 & 0.02 & 0.002 & 0.003 \\
+0.1453 & 0.140 & 0.05 & 0.005 & 0.007 \\
+0.2288 & 0.220 & 0.05 & 0.005 & 0.008 \\
+0.2980 & 0.300 & 0.10 & 0.010 & 0.013 \\
+0.3773 & 0.380 & 0.10 & 0.010 & 0.015 \\
+0.4537 & 0.460 & 0.10 & 0.010 & 0.017 \\
+0.5316 & 0.540 & 0.10 & 0.010 & 0.019 \\
+0.6350 & 0.64  & 0.20 & 0.020 & 0.03 \\ 
+0.7090 & 0.72  & 0.20 & 0.020 & 0.03 \\ 
+0.8150 & 0.80  & 0.20 & 0.020 & 0.03 \\
 \bottomrule
 \end{tabular}
 
-\caption{Tabella (\err{numeri a caso, ricontrolla, mettere simboli titoli?, cifre decimali?}).}
-\label{tab:calibrazione_strumenti}
+\caption{Coppie di punti di tensione misurate con multimetro e oscilloscopio. La prima colonna riporta la tensione misurata con il multimetro, la seconda quella misurata con l'oscilloscopio, la terza il fondo scala dell'oscilloscopio, la quarta la risoluzione dell'oscilloscopio e l'ultima l'errore totale associato alla misura con l'oscilloscopio.}
+\label{tab:calibrazione_volt}
 \end{table}
 
 Le incertezze del multimetro sono state omesse in quanto trascurabili rispetto a quelle dell'oscilloscopio.
@@ -161,7 +163,7 @@ La risoluzione dell'oscilloscopio (e quindi l'errore sulla lettura) $\sigma_{l}$
 dove in questo caso, in tutte le misure dell'esperimento, il numero di tacchette apprezzabili è stato 0.5. Infine, l'errore totale associato ad ogni misura di tensione con l'oscilloscopio è stato calcolato come
 
 \begin{equation}
-    \sigma = \sqrt{(\sigma_{l})^{2} + (\sigma_{c})^{2}}
+    \sigma_{osc} = \sqrt{(\sigma_{l})^{2} + (\sigma_{c})^{2}}
 \end{equation}
 
 \noindent
@@ -182,8 +184,8 @@ si è ottenuta la seguente relazione tra le due misure di tensione
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\textwidth]{example-image}
-    \caption{Fit lineare dei dati di calibrazione tra multimetro e oscilloscopio.\err{completare}}
+    \includegraphics[width=0.7\textwidth]{calibrazione.pdf}
+    \caption{Fit lineare dei dati di calibrazione tra multimetro e oscilloscopio.Sulle ascisse sono riportati i valori di tensione misurati con il multimetro, sulle ordinate quelli misurati con l'oscilloscopio.}
     \label{fig:fit_calibrazione}
 \end{figure}
 
@@ -191,7 +193,7 @@ si è ottenuta la seguente relazione tra le due misure di tensione
 I parametri del fit 
 
 \begin{equation*}
-    a = \cdots \pm \cdots \text{ mV} \hspace{2cm} b = \cdots \pm \cdots
+    a = -6 \pm 3 \text{ mV} \hspace{2cm} b = 1.014 \pm 0.017
 \end{equation*}
 
 \noindent
