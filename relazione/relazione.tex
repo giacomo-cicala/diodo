@@ -83,7 +83,7 @@ dove $I$ è la corrente che attraversa il diodo, $V$ è la tensione ai suoi capi
 
 \section*{Apparato sperimentale e svolgimento}
 
-Il circuito (\cref{fig:schema_elettrico}) è stato realizzato su una piastra forata (\err{foto?}) utilizzando un alimentatore a bassa tensione \textit{TTi EB2025T} impostato a  $+5$V(\cref{fig:alimentatore}), un potenziometro da 1 k$\Omega$ e due diodi a giunzione p-n, uno al silicio (\err{codice diodo?}) e uno al germanio (\err{uguale}). La tensione ai capi del diodo e la corrente che lo attraversa sono state misurate rispettivamente con un oscilloscopio  da banco \textit{GW Instek GOS-652G} (\cref{fig:oscilloscopio})  e  da un multimetro \textit{Fluke 175 True RMS Multimeter} (\cref{fig:multimetro}) in modalità amperometro. Prima di verificare l'equazione di Shockley, per testare la calibrazione tra multimetro e oscilloscopio, si è rimosso il diodo (cortocircuitando il ramo) e si sono fatte misure di tensione tra i punti A e B (\err{aggiungere}) del circuito (\cref{fig:schema_elettrico}) con entrambi gli strumenti, variando il valore del potenziometro. Successivamente, per ricavare le caratteristiche I-V, la resistenza del potenziometro è stata variata in modo da ottenere diverse coppie di valori di tensione e corrente.
+Il circuito (\cref{fig:schema_elettrico}) è stato realizzato su una piastra forata (\err{foto?}) utilizzando un alimentatore a bassa tensione \textit{TTi EB2025T} impostato a  $+5$V(\cref{fig:alimentatore}), un potenziometro da 1 k$\Omega$ e due diodi a giunzione p-n, uno al silicio (\err{codice diodo?}) e uno al germanio (\err{uguale}). La tensione ai capi del diodo e la corrente che lo attraversa sono state misurate rispettivamente con un oscilloscopio  da banco \textit{GW Instek GOS-652G} (\cref{fig:oscilloscopio})  e  da un multimetro \textit{Fluke 175 True RMS Multimeter} (\cref{fig:multimetro}) in modalità amperometro. Prima di verificare l'equazione di Shockley, per testare la calibrazione tra multimetro e oscilloscopio, si è rimosso il diodo (cortocircuitando il ramo) e si sono fatte misure di tensione tra i punti A e B (\err{aggiungere}) del circuito (\cref{fig:schema_elettrico}) con entrambi gli strumenti, variando il valore del potenziometro. Successivamente, per ricavare le caratteristiche I-V dei diodi, la resistenza del potenziometro è stata variata in modo da ottenere diverse coppie di valori di tensione e corrente.
 
 
 \begin{figure}[h!]
@@ -136,16 +136,16 @@ Si riportano in (\cref{tab:calibrazione_strumenti}) i valori di tensione misurat
 \multicolumn{1}{c}{\parbox{2.6cm}{Risoluzione oscilloscopio (mV)}} &
 \multicolumn{1}{c}{\parbox{3.6cm}{Errori oscilloscopio (mV)}} \\
 \midrule
-56.80  & 52.0  & 20  & 2  & 2.58526594  \\
-145.30 & 140.0 & 50  & 5  & 6.54904573  \\
-228.80 & 220.0 & 50  & 5  & 8.29517932  \\
-298.00 & 300.0 & 100 & 10 & 13.462912   \\
-377.30 & 380.0 & 100 & 10 & 15.1726728  \\
-453.70 & 460.0 & 100 & 10 & 17.0496334  \\
-531.60 & 540.0 & 100 & 10 & 19.0444218  \\
-635.2 & 640.0 & 200 & 20 & 27.7288658  \\
-709.0 & 720.0 & 200 & 20 & 29.4416372  \\
-815.0 & 800.0 & 200 & 20 & 31.2449996  \\ 
+56.8  & 52 & 20  & 2  & 3  \\
+145.3 & 140 & 50  & 5  & 7  \\
+228.8 & 220 & 50  & 5  & 8  \\
+298.0 & 300 & 100 & 10 & 13  \\
+377.3 & 380 & 100 & 10 & 15  \\
+453.7 & 460 & 100 & 10 & 17  \\
+531.6 & 540 & 100 & 10 & 19  \\
+635 & 640 & 200 & 20 & 28  \\
+709 & 720 & 200 & 20 & 30  \\
+815 & 800 & 200 & 20 & 31  \\ 
 \bottomrule
 \end{tabular}
 
@@ -172,7 +172,7 @@ dove l'errore del costruttore è
 \end{equation} 
 
 \noindent
-con $V_{mis}$ tensione misurata; l'errore sullo zero dell'oscilloscopio è stato trascurato in quanto si è verificato che fosse molto più piccolo rispetto agli altri errori, grazie ad un opportuno fondo scala.
+con $V_{mis}$ tensione misurata; l'errore sullo zero dell'oscilloscopio è stato trascurato in quanto si è verificato che fosse molto più piccolo rispetto agli altri errori, grazie ad un opportuno fondo scala di $5$mV/Div.
 
 Eseguendo un fit lineare dei dati di calibrazione (\cref{fig:fit_calibrazione})
 \begin{equation}

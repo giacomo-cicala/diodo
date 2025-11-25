@@ -100,13 +100,13 @@ void germanio()
     gr->SetMarkerStyle(20);
     gr->SetMarkerColor(kGreen + 2);
 
-    TF1 *f = new TF1("fshock_ge", "[0]*(exp(x/[1])-1)", 0, 1000);
+    TF1 *f = new TF1("fshock_ge", "[0]*(exp(x/[1])-1)", 0, 180);
     f->SetParNames("I0", "etaVt");
     f->SetParameter(0, 0.005);
     f->SetParameter(1, 30);
     f->SetLineColor(kRed);
 
-    gr->Fit(f, "QS");
+    gr->Fit(f, "QS", "", 0., 180.); // Q=quiet, S=store result
 
     double I0 = f->GetParameter(0);
     double etaVt = f->GetParameter(1);
@@ -136,7 +136,7 @@ void analisi_completa()
     c1->cd();
 
     // Crea i TGraphErrors passando i nomi dei file (stile come nelle altre funzioni)
-    const char *file_si = "data/dati_silicio.txt";
+    const char *file_si = "data/dati_germanio2.txt";
     const char *file_ge = "data/dati_germanio.txt";
     TGraphErrors *gr_si = new TGraphErrors(file_si, "%lg %lg %lg %lg");
     TGraphErrors *gr_ge = new TGraphErrors(file_ge, "%lg %lg %lg %lg");
