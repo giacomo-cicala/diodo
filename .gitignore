@@ -1,4 +1,6 @@
-.vscode/
+.vscode
+relazione/.vscode
+relazione/build
 *.aux
 *.fls
 *.log
