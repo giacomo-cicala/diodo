@@ -3,7 +3,7 @@
 \usepackage[a4paper, margin=1.97cm]{geometry}
 \usepackage{graphicx}
 \usepackage{amsmath}
-\usepackage{circuitikz}
+\usepackage[american]{circuitikz}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{amsfonts}
@@ -24,7 +24,7 @@
 \maketitle
 
 \renewcommand{\abstractname}{Abstract}
-\begin{abstract}
+\begin{abstract}\noindent
 	L'esperimento ha avuto come obbiettivo la realizzazione di un circuito per la misura delle curve caratteristica I-V di due diodi a giunzione p-n, uno al silicio e uno al germanio. I valori della corrente di saturazione inversa e del prodotto del fattore di idealità con la tensione termica per il diodo al silicio sono risultati essere
 	\begin{equation*}
 		(I_{0})_{Si} = ( \cdots \pm \cdots) \text{ mA} \hspace{2cm} (\eta V_{T})_{Si} = (\cdots \pm \cdots) \text{ mV}
@@ -36,12 +36,11 @@
 	\begin{equation*}
 		(I_{0})_{Ge} = ( \cdots \pm \cdots) \text{ mA} \hspace{2cm} (\eta V_{T})_{Ge} = (\cdots \pm \cdots) \text{ mV}
 	\end{equation*}
-
 \end{abstract}
 
 \section*{Introduzione}
 
-Nell' esperimento svolto in laboratorio abbiamo abbiamo realizzato un circuito
+Nell'esperimento svolto in laboratorio abbiamo abbiamo realizzato un circuito
 (\cref{fig:schema_elettrico}) per la misura della caratteristica I-V di due
 diodi a giunzione p-n a polarizzazione diretta, uno al silicio e uno al
 germanio. La caratteristica I-V di un diodo non ideale è descritta
@@ -57,37 +56,54 @@ dove $I$ è la corrente che attraversa il diodo, $V$ è la tensione ai suoi capi
 
 \begin{figure}[h!]
 	\centering
-	\begin{circuitikz}[american]
-        % Generatore
-		\draw (0,0) coordinate(GND) to[voltage source, invert, l=$+5V$] ++(0,3) -- ++(2,0) coordinate (pot_up);
+	\begin{circuitikz}
+		% Generatore
+		\draw (0,0) coordinate (GND) to[voltage source, invert, l=$+5V$] ++(0,3) -- ++(1.5,0) coordinate (pot_up);
 
-        % Potenziometro
+		% Potenziometro
 		\draw (pot_up) to[potentiometer, name=P, l_=$R$] ++(0,-3) coordinate (pot_down);
 
 		\draw (pot_down) to[short, -*] (GND) node[ground]{};
 
-        % Diodo
-		\draw (P.wiper) -- ++(1,0) coordinate (tmp) -- (tmp |- 0,3) to[rmeterwa, t=A, i=$i$] ++(3,0) coordinate(diode_up) to[diode] (diode_up |- 0,0) coordinate (diode_down);
-        
-        % Tensione
-        \draw (diode_down) to[short, *-] ++(1.5,0) coordinate (tmp) to[rmeterwa, t=V, v=$v$] (tmp |- diode_up) to[short, -*] (diode_up);
-        % Corrente
-        \draw (diode_down) to [short, -*] (pot_down);
-    \end{circuitikz}
-	\caption{Schema elettrico del circuito utilizzato per la misura della caratteristica I-V di un diodo a giunzione p-n.}
+		\draw (P.wiper) -- ++(0.5,0) coordinate (tmp) -- (tmp |- 0,3) --
+		++(1.5,0) coordinate(oscope_up) to[oscope, v=$v$] (oscope_up |- GND) coordinate(oscope_down) to [short, -*] (pot_down);
+
+		\draw (oscope_up) to[short, *-] ++(2,0) coordinate (vmeter_up) to[rmeterwa, t=V, v=$v$] (vmeter_up |- GND) to [short, -*] (oscope_down);
+	\end{circuitikz}
+	\hfill
+	\begin{circuitikz}
+		% Generatore
+		\draw (0,0) coordinate(GND) to[voltage source, invert, l=$+5V$] ++(0,3) -- ++(1.5,0) coordinate (pot_up);
+
+		% Potenziometro
+		\draw (pot_up) to[potentiometer, name=P, l_=$R$] ++(0,-3) coordinate (pot_down);
+
+		\draw (pot_down) to[short, -*] (GND) node[ground]{};
+
+		% Diodo
+		\draw (P.wiper) -- ++(0.5,0) coordinate (tmp) -- (tmp |- 0,3) to[rmeterwa, t=A, i=$i$] ++(2,0) coordinate(diode_up) to[diode] (diode_up |- 0,0) coordinate (diode_down);
+
+		% Tensione
+		\draw (diode_up) to[short, *-] ++(2,0) coordinate (tmp) to[oscope, v=$v$] (tmp |- diode_down) to[short, -*] (diode_down);
+		% Corrente
+		\draw (diode_down) to [short, -*] (pot_down);
+	\end{circuitikz}
+	\caption{Schema elettrico del circuito realizzato.
+	A sinistra la configurazione per la calibrazione dell'oscilloscopio;
+	a destra quella per la misura della caratteristica I-V del diodo.}
 	\label{fig:schema_elettrico}
 \end{figure}
 
 \section*{Apparato sperimentale e svolgimento}
 
 Il circuito (\cref{fig:schema_elettrico}) è stato realizzato su una piastra
-forata (\err{foto?}) utilizzando un alimentatore a bassa tensione \textit{TTi
-	EB2025T} impostato a $+5$V(\cref{fig:alimentatore}), un potenziometro da 1
-k$\Omega$ e due diodi a giunzione p-n, uno al silicio (\err{codice diodo?}) e
-uno al germanio (\err{uguale}). La tensione ai capi del diodo e la corrente che
-lo attraversa sono state misurate rispettivamente con un oscilloscopio da banco
-\textit{GW Instek GOS-652G} (\cref{fig:oscilloscopio}) e da un multimetro
-\textit{Fluke 175 True RMS Multimeter} (\cref{fig:multimetro}) in modalità
+forata utilizzando un alimentatore a bassa tensione \texttt{TTi EB2025T}
+(\cref{fig:alimentatore}) impostato a $+5$V, un potenziometro da 1 k$\Omega$ e
+due diodi a giunzione p-n, uno al silicio (\err{codice diodo?}) e uno al
+germanio (\err{uguale}). La tensione ai capi del diodo e la corrente che lo
+attraversa sono state misurate rispettivamente con un oscilloscopio da banco
+\texttt{GW Instek GOS-652G} (\cref{fig:oscilloscopio}) e da un multimetro
+\texttt{Fluke 175 True RMS Multimeter} (\cref{fig:multimetro}) in modalità
 amperometro. Prima di verificare l'equazione di Shockley, per testare la
 calibrazione tra multimetro e oscilloscopio, si è rimosso il diodo
 (cortocircuitando il ramo) e si sono fatte misure di tensione tra i punti A e B
