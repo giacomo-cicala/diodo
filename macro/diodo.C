@@ -1,232 +1,111 @@
 #include "TCanvas.h"
 #include "TGraphErrors.h"
 #include "TF1.h"
-#include "TAxis.h"
 #include "TStyle.h"
 #include "TLegend.h"
-#include "TMath.h"
-#include "TMatrixD.h"
+#include "TAxis.h"
+#include "TPad.h"
+#include "TFitResult.h"
 #include <iostream>
 #include <iomanip>
 
-// Macro per analisi Diodi con fit esponenziali per Silicio e Germanio
+const double FIT_MIN_SI = 0.0;
+const double FIT_MAX_SI = 1000.0;
+const double FIT_MIN_GE = 0.0;
+const double FIT_MAX_GE = 180.0;
 
-void fit_calibrazione()
-{
-    const char *filename = "data/dati_calibrazione.txt";
+// Helper: Standardize graph appearance
+void ApplyStyle(TGraphErrors* gr, int color, const char* title) {
+    gr->SetMarkerStyle(20);
+    gr->SetMarkerSize(1.0);
+    gr->SetMarkerColor(color);
+    gr->SetLineColor(color);
+    gr->SetTitle(title);
+    gr->GetXaxis()->SetTitleSize(0.045);
+    gr->GetYaxis()->SetTitleSize(0.045);
+}
 
-    TCanvas *c1 = new TCanvas("c1", "Calibrazione", 800, 600);
-    c1->cd();
+// Helper: Standardize fit function
+TF1* CreateFitFunc(const char* name, double min, double max, double p0, double p1) {
+    TF1* f = new TF1(name, "[0]*(exp(x/[1])-1)", min, max);
+    f->SetParNames("I_{0}", "#eta V_{t}");
+    f->SetParameters(p0, p1); // Initial guesses
+    f->SetLineColor(kBlack);
+    f->SetLineWidth(2);
+    return f;
+}
+
+void figure() {
+    // Canvas Setup
     gStyle->SetOptFit(1111);
     gStyle->SetOptStat(0);
-    gPad->SetGrid();
     
-    TGraphErrors *gr = new TGraphErrors(filename, "%lg %lg %lg %lg");
+    TCanvas *c1 = new TCanvas("c_sidebyside", "Diodi Side-by-Side", 1200, 600);
+    c1->Divide(2, 1);
 
-    if (gr->GetN() == 0)
-    {
-        std::cout << "Errore: " << filename << " vuoto o non trovato!" << std::endl;
+    // --- DATA LOADING ---
+    TGraphErrors *gr_si = new TGraphErrors("data/dati_silicio.txt", "%lg %lg %lg %lg");
+    TGraphErrors *gr_ge = new TGraphErrors("data/dati_germanio.txt", "%lg %lg %lg %lg");
+
+    if (gr_si->GetN() == 0 || gr_ge->GetN() == 0) {
+        std::cout << "Error: Data file empty or not found." << std::endl;
         return;
     }
 
-    gr->SetTitle("Calibrazione;Multimetro (mV);Oscilloscopio (mV)");
-    gr->SetMarkerStyle(20);
-    gr->SetMarkerColor(kBlue);
+    // --- STYLING ---
+    ApplyStyle(gr_si, kBlue, "Silicon Diode;Voltage (mV);Current (mA)");
+    ApplyStyle(gr_ge, kRed,  "Germanium Diode;Voltage (mV);Current (mA)");
 
-    TF1 *f0 = new TF1("f_calib", "[0]+[1]*x", 0., 1000.);
-    f0->SetLineColor(kRed);
+    // --- FITTING ---
+    TF1 *f_si = CreateFitFunc("f_si", FIT_MIN_SI, FIT_MAX_SI, 1e-6, 40.0);
+    TF1 *f_ge = CreateFitFunc("f_ge", FIT_MIN_GE, FIT_MAX_GE, 0.005, 30.0);
 
-    gr->Fit(f0, "Q");
-    gr->Draw("AP");
-    // Imposta range X e Y uguali e tick regolari da 0 a 900
-    if (gPad) {
-        gr->GetXaxis()->SetLimits(0, 900);
-        gr->SetMinimum(0);
-        gr->SetMaximum(900);
-        gPad->Modified();
-        gPad->Update();
-        gr->GetXaxis()->SetNdivisions(9, kTRUE);
-        gr->GetYaxis()->SetNdivisions(9, kTRUE);
-    }
+    // Perform fits (Q = Quiet, S = Store results)
+    TFitResultPtr r_si = gr_si->Fit(f_si, "QSR");
+    TFitResultPtr r_ge = gr_ge->Fit(f_ge, "QSR");
+
+    // --- DRAWING ---
+    
+    // Pad 1: Silicon
+    c1->cd(1);
+    gPad->SetGrid();
+    gPad->SetLogy();
+    gPad->SetLeftMargin(0.12); // Adjust margins for axis labels
+    gr_si->Draw("AP");
+
+    TLegend *leg1 = new TLegend(0.15, 0.75, 0.55, 0.88);
+    leg1->AddEntry(gr_si, "Data (Si)", "p");
+    leg1->AddEntry(f_si, "Fit: I_{0}(e^{V/#eta V_{T}}-1)", "l");
+    leg1->Draw();
+
+    // Pad 2: Germanium
+    c1->cd(2);
+    gPad->SetGrid();
+    gPad->SetLogy();
+    gPad->SetLeftMargin(0.12);
+    gr_ge->Draw("AP");
+
+    TLegend *leg2 = new TLegend(0.15, 0.75, 0.55, 0.88);
+    leg2->AddEntry(gr_ge, "Data (Ge)", "p");
+    leg2->AddEntry(f_ge, "Fit: I_{0}(e^{V/#eta V_{T}}-1)", "l");
+    leg2->Draw();
+
+    // --- OUTPUT ---
+    auto print_res = [](const char* label, TF1* f, TFitResultPtr& r) {
+        std::cout << "\n>>> " << label << " RESULTS:\n"
+                  << "-----------------------------------\n";
+        if (r.Get()) { // Ensure fit succeeded
+            std::cout << "  I0     = " << f->GetParameter(0) << " +/- " << f->GetParError(0) << " mA\n"
+                      << "  eta*Vt = " << f->GetParameter(1) << " +/- " << f->GetParError(1) << " mV\n"
+                      << "  Chi2/NDF = " << f->GetChisquare() << "/" << f->GetNDF() 
+                      << " (Prob: " << f->GetProb() << ")\n";
+        } else {
+            std::cout << "  FIT FAILED\n";
+        }
+        std::cout << "-----------------------------------\n";
+    };
 
     std::cout << std::fixed << std::setprecision(6);
-    std::cout << "\n>>> Calibrazione (" << filename << " ):\n";
-    std::cout << "Intercetta: " << f0->GetParameter(0) << " +/- " << f0->GetParError(0) << std::endl;
-    std::cout << "Pendenza  : " << f0->GetParameter(1) << " +/- " << f0->GetParError(1) << std::endl;
-}
-
-// Fit esponenziale: I(V) = I0 * exp(m * V)
-void silicio()
-{
-    const char *filename = "data/dati_silicio.txt";
-    TGraphErrors *gr = new TGraphErrors(filename, "%lg %lg %lg %lg");
-
-    if (gr->GetN() == 0)
-    {
-        std::cout << "Errore: " << filename << " vuoto o non trovato!" << std::endl;
-        return;
-    }
-
-    gStyle->SetOptFit(1111);
-    gStyle->SetOptStat(0);
-    gr->SetTitle("Diodo Silicio;Tensione (mV);Corrente (mA)");
-    gr->SetMarkerStyle(20);
-    gr->SetMarkerColor(kBlue);
-
-    // Modello di Shockley: I(V) = I0 * (exp(m*V) - 1)
-    TF1 *f = new TF1("fshock_si", "[0]*(exp(x/[1])-1)", 0., 1000.);
-    f->SetParNames("I0", "etaVt");
-    // Valori iniziali ragionevoli per convergenza (eta*Vt ~ 26 mV a T ambiente)
-    f->SetParameter(0, 1e-6);
-    f->SetParameter(1, 60);
-    f->SetLineColor(kRed);
-
-    gr->Fit(f, "QS"); // Q=quiet, S=store result
-
-    double I0 = f->GetParameter(0);
-    double etaVt = f->GetParameter(1);
-    double sigma_I0 = f->GetParError(0);
-    double sigma_etaVt = f->GetParError(1);
-
-    // Disegno (la funzione f disegnata rappresenta il fit eseguito)
-    gr->Draw("AP");
-    f->Draw("same");
-    // Scala logaritmica sull'asse Y (corrente)
-    if (gPad)
-        gPad->SetLogy(1);
-
-    std::cout << std::fixed << std::setprecision(6);
-    std::cout << "\n>>> Silicio (" << filename << ") - fit Shockley (I=I0*(exp(m*V)-1)) :\n";
-    std::cout << "I0 (saturazione)      = " << I0 << " +/- " << sigma_I0 << " (mA)" << std::endl;
-    std::cout << "eta*Vt (parametro)    = " << etaVt << " +/- " << sigma_etaVt << " (mV)" << std::endl;
-}
-
-void germanio()
-{
-    const char *filename = "data/dati_germanio.txt";
-    TGraphErrors *gr = new TGraphErrors(filename, "%lg %lg %lg %lg");
-
-    if (gr->GetN() == 0)
-    {
-        std::cout << "Errore: " << filename << " vuoto o non trovato!" << std::endl;
-        return;
-    }
-    gStyle->SetOptFit(1111);
-    gStyle->SetOptStat(0);
-    gr->SetTitle("Diodo Germanio;Tensione (mV);Corrente (mA)");
-    gr->SetMarkerStyle(20);
-    gr->SetMarkerColor(kGreen + 2);
-
-    TF1 *f = new TF1("fshock_ge", "[0]*(exp(x/[1])-1)", 0, 180);
-    f->SetParNames("I0", "etaVt");
-    f->SetParameter(0, 0.005);
-    f->SetParameter(1, 30);
-    f->SetLineColor(kRed);
-
-    gr->Fit(f, "QS", "", 0., 180.); // Q=quiet, S=store result
-
-    double I0 = f->GetParameter(0);
-    double etaVt = f->GetParameter(1);
-    double sigma_I0 = f->GetParError(0);
-    double sigma_etaVt = f->GetParError(1);
-
-    gr->Draw("AP");
-
-    // Scala logaritmica sull'asse Y (corrente)
-    if (gPad)
-        gPad->SetLogy(1);
-
-    std::cout << std::fixed << std::setprecision(6);
-    std::cout << "\n>>> Germanio (" << filename << ") - fit Shockley (I=I0*(exp(m*V)-1)) :\n";
-    std::cout << "I0 (saturazione)      = " << I0 << " +/- " << sigma_I0 << " (mA)" << std::endl;
-    std::cout << "eta*Vt (parametro)    = " << etaVt << " +/- " << sigma_etaVt << " (mV)" << std::endl;
-}
-
-void analisi_completa()
-{
-    // Mantieni lo stile delle altre funzioni: crea i grafici direttamente dai file,
-    // esegui i fit e poi usa TMultiGraph per sovrapporli in un unico pannello.
-    gStyle->SetOptFit(1111);
-    gStyle->SetOptStat(0);
-
-    TCanvas *c1 = new TCanvas("c1", "Diodi - Multiplot fittato", 1000, 700);
-    c1->cd();
-
-    // Crea i TGraphErrors passando i nomi dei file (stile come nelle altre funzioni)
-    const char *file_si = "data/dati_germanio2.txt";
-    const char *file_ge = "data/dati_germanio.txt";
-    TGraphErrors *gr_si = new TGraphErrors(file_si, "%lg %lg %lg %lg");
-    TGraphErrors *gr_ge = new TGraphErrors(file_ge, "%lg %lg %lg %lg");
-
-    if (gr_si->GetN() == 0)
-    {
-        std::cout << "Errore: " << file_si << " vuoto o non trovato!" << std::endl;
-        return;
-    }
-    if (gr_ge->GetN() == 0)
-    {
-        std::cout << "Errore: " << file_ge << " vuoto o non trovato!" << std::endl;
-        return;
-    }
-
-    gr_si->SetMarkerStyle(20);
-    gr_si->SetMarkerColor(kBlue);
-    gr_si->SetTitle("Diodi - Multiplot;Tensione (mV);Corrente (mA)");
-    gr_ge->SetMarkerStyle(21);
-    gr_ge->SetMarkerColor(kRed);
-
-    // Definisci le funzioni di fit (stesso modello usato altrove)
-    TF1 *f_si = new TF1("f_si", "[0]*(exp(x/[1])-1)", 0., 1000.);
-    f_si->SetParNames("I0", "etaVt");
-    f_si->SetParameter(0, 1e-6);
-    f_si->SetParameter(1, 40);
-    f_si->SetLineColor(kBlue);
-    TF1 *f_ge = new TF1("f_ge", "[0]*(exp(x/[1])-1)", 0., 110);
-    f_ge->SetParNames("I0", "etaVt");
-    f_ge->SetParameter(0, 0.005);
-    f_ge->SetParameter(1, 30.0);
-    f_ge->SetLineColor(kRed);
-
-    // Esegui i fit direttamente sui grafici creati dai file
-    TFitResultPtr r_si = gr_si->Fit(f_si, "QS");
-    TFitResultPtr r_ge = gr_ge->Fit(f_ge, "QS", "", 0., 110.);
-
-    // Assicuriamoci scala lineare
-    if (gPad)
-        gPad->SetLogy(1);
-
-    // Multiplot con TMultiGraph
-    TMultiGraph *mg = new TMultiGraph();
-    mg->Add(gr_si, "P");
-    mg->Add(gr_ge, "P");
-    mg->SetTitle("Diodi: Silicio vs Germanio;Tensione (mV);Corrente (mA)");
-    mg->Draw("AP");
-
-    // Disegna i fit
-    f_si->Draw("same");
-    f_ge->Draw("same");
-
-    // Legenda
-    TLegend *leg = new TLegend(0.65, 0.65, 0.89, 0.89);
-    leg->SetBorderSize(0);
-    leg->AddEntry(gr_si, "Silicio (dati)", "p");
-    leg->AddEntry(f_si, "Silicio (fit)", "l");
-    leg->AddEntry(gr_ge, "Germanio (dati)", "p");
-    leg->AddEntry(f_ge, "Germanio (fit)", "l");
-    leg->Draw();
-
-    // Stampa risultati
-    std::cout << std::fixed << std::setprecision(6);
-    if (r_si.Get())
-    {
-        std::cout << "\n>>> Silicio - fit results:\n";
-        std::cout << "I0 = " << f_si->GetParameter(0) << " +/- " << f_si->GetParError(0) << " (mA)\n";
-        std::cout << "eta*Vt = " << f_si->GetParameter(1) << " +/- " << f_si->GetParError(1) << " (mV)\n";
-    }
-    if (r_ge.Get())
-    {
-        std::cout << "\n>>> Germanio - fit results:\n";
-        std::cout << "I0 = " << f_ge->GetParameter(0) << " +/- " << f_ge->GetParError(0) << " (mA)\n";
-        std::cout << "eta*Vt = " << f_ge->GetParameter(1) << " +/- " << f_ge->GetParError(1) << " (mV)\n";
-    }
+    print_res("SILICON", f_si, r_si);
+    print_res("GERMANIUM", f_ge, r_ge);
 }
