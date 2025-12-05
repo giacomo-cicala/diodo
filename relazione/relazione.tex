@@ -62,7 +62,7 @@
 
 \section*{Introduzione}
 
-Nell'esperimento svolto in laboratorio abbiamo abbiamo realizzato un circuito
+Nell'esperimento svolto in laboratorio abbiamo realizzato un circuito
 per la misura della caratteristica I-V di due diodi a giunzione p-n a
 polarizzazione diretta, uno al silicio e uno al germanio. La caratteristica I-V
 di un diodo non ideale è descritta dall'equazione di Shockley:
@@ -167,7 +167,7 @@ in parallelo e misurano la stessa tensione. Variando la resistenza del
 potenziometro sono stati acquisiti dieci punti con tensioni comprese tra
 \qty{0.05}{\V} e \qty{0.8}{\V} (\cref{tab:calibrazione_strumenti}).
 
-Per ricavare le caratteristiche I-V dei diodi si è realizato il secondo
+Per ricavare le caratteristiche I-V dei diodi si è realizzato il secondo
 circuito di \cref{fig:schema_elettrico}, prima con il diodo al silicio e poi
 con quello al germanio. In questa configurazione l'oscilloscopio è collegato in
 parallelo al diodo, misurando la differenza di potenziale tra i due capi; il
@@ -239,7 +239,9 @@ questo offset:
 In \cref{fig:caratteristiche} si possono vedere i punti misurati con la
 rispettiva funzione caratteristica. Il fit del silicio è stato svolto su tutti
 i dati; mentre per il germanio ci si è ristretti agli 8 punti nel range
-\qty{0}{\mV} -- \qty{180}{\mV}. \err{spiega?}
+\qty{0}{\mV} -- \qty{180}{\mV}. Questo perchè oltre tale valore la
+caratteristica si discosta dall'andamento esponenziale previsto
+dall'equazione di Shockley a causa dell'effetto di resistenza in serie del diodo, che mentre per quello al silicio è trascurabile, per quello al germanio diventa significativo per effetto della corrente più elevata già a basse tensioni.
 
 \begin{figure}[h]
 	\includegraphics[width=\textwidth]{caratteristiche.pdf}
