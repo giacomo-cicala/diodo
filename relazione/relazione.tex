@@ -56,7 +56,7 @@
 	mentre per il diodo al germanio sono:
 
 	\begin{equation*}
-		(I_{0})_{Ge} = ( 1 \pm 4 ) \ \unit{\uA} \hspace{2cm} (\eta V_{T})_{Ge} = (44 \pm 25) \ \unit{\mV}
+		(I_{0})_{Ge} = ( 1 \pm 4 ) \ \unit{\uA} \hspace{2cm} (\eta V_{T})_{Ge} = (4 \pm 2) \times 10 \ \unit{\mV}
 	\end{equation*}
 \end{abstract}
 
@@ -85,8 +85,7 @@ all'interno della depletion region.
 Il circuito (\cref{fig:schema_elettrico}) è stato realizzato su una piastra
 forata utilizzando un alimentatore a bassa tensione \texttt{TTi EB2025T}
 (\cref{fig:alimentatore}) con uscita fissa a \qty{+5}{\V}, un potenziometro da
-\qty{1}{\kohm} e due diodi a giunzione p-n, uno al silicio (\err{codice
-	diodo?}) e uno al germanio (\err{uguale}). La tensione ai capi del diodo e la
+\qty{1}{\kohm} e due diodi a giunzione p-n, uno al silicio e uno al germanio. La tensione ai capi del diodo e la
 corrente che lo attraversa sono state misurate rispettivamente con un
 oscilloscopio da banco \texttt{GW Instek GOS-652G} (\cref{fig:oscilloscopio}) e
 un multimetro \texttt{Fluke 175 True RMS Multimeter} (\cref{fig:multimetro}) in
@@ -243,7 +242,7 @@ i dati; mentre per il germanio ci si è ristretti agli 8 punti nel range
 \qty{0}{\mV} -- \qty{180}{\mV}. \err{spiega?}
 
 \begin{figure}[h]
-	\includegraphics[width=\textwidth]{caratteristica.pdf}
+	\includegraphics[width=\textwidth]{caratteristiche.pdf}
 	\caption{Caratteristica I-V misurata per diodo al silicio (a sinistra) e al
 		germanio (a destra). Asse delle ordinate in scala logaritmica. Il fit è
 		ristretto alla regione in cui sono graficate le funzioni.}
@@ -259,10 +258,28 @@ Dall'analisi risulta:
 per il silicio; mentre per il diodo al germanio:
 
 \begin{equation*}
-	(I_{0})_{Ge} = ( 1 \pm 4 ) \ \unit{\uA} \hspace{2cm} (\eta V_{T})_{Ge} = (44 \pm 25) \ \unit{\mV}
+	(I_{0})_{Ge} = ( 1 \pm 4 ) \ \unit{\uA} \hspace{2cm} (\eta V_{T})_{Ge} = (4 \pm 2) \times 10 \ \unit{\mV}
 \end{equation*}
 
 \section*{Conclusioni}
+Si può notare come all'interno degli intervalli di fit, le caratteristiche siano compatibili con  l'andamento esponenziale previsto
+dall'equazione di Shockley.
+Infine, i valori misurati della corrente di saturazione
+	inversa e del prodotto del fattore di idealità con la tensione termica, per il
+	diodo al silicio sono:
+
+	\begin{equation*}
+		{(I_{0})}_{Si} = ( 1 \pm 2 ) \ \unit{\nA} \hspace{2cm} {(\eta V_{T})}_{Si} = (47 \pm 7) \ \unit{\mV}
+	\end{equation*}
+
+	\noindent
+	mentre per il diodo al germanio sono:
+
+	\begin{equation*}
+		(I_{0})_{Ge} = ( 1 \pm 4 ) \ \unit{\uA} \hspace{2cm} (\eta V_{T})_{Ge} = (4 \pm 2) \times 10 \ \unit{\mV}
+	\end{equation*}
+
+
 
 \appendix
 \section{Misure tabulate}

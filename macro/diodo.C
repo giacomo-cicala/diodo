@@ -99,8 +99,8 @@ void figure()
     }
 
     // --- STYLING ---
-    ApplyStyle(gr_si, kBlue, "Diodo al Silicio;Voltage (mV);Current (mA)");
-    ApplyStyle(gr_ge, kRed, "Diodo al Germanio;Voltage (mV);Current (mA)");
+    ApplyStyle(gr_si, kBlue, "Diodo al Silicio;Tensione (mV);Corrente (mA)");
+    ApplyStyle(gr_ge, kRed, "Diodo al Germanio;Tensione (mV);Corrente (mA)");
 
     // --- FITTING ---
     TF1 *f_si = CreateFitFunc("f_si", FIT_MIN_SI, FIT_MAX_SI, 1e-6, 40.0);
